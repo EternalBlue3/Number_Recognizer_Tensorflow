@@ -33,7 +33,7 @@ def recognize(img):
     image = image.transpose(Image.FLIP_LEFT_RIGHT).resize((28,28))
     
     image = np.array(image)
-    image = image.expand_dims(image, axis=-1)  # Add an additional dimension for channel
+    image = np.expand_dims(image, axis=-1)  # Add an additional dimension for channel
     image = image.astype('float32') / 255.0  # Normalize the image
     image = np.expand_dims(image, axis=0)
     image = image.reshape(1, 784)  # Reshape the image to (1, 784)
