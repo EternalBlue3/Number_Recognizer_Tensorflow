@@ -10,10 +10,6 @@ def create_model():
     model = tf.keras.Sequential([
         keras.layers.Dense(512, activation='relu', input_shape=(784,)),
         keras.layers.Dropout(0.2),
-        keras.layers.Dense(256, activation='relu'),
-        keras.layers.Dropout(0.2),
-        keras.layers.Dense(128, activation='relu'),
-        keras.layers.Dropout(0.2),
         keras.layers.Dense(10)
     ])
 
@@ -29,7 +25,7 @@ test_images = test_images.reshape(-1, 784) / 255.0
 model = create_model()
 
 # Train the model on the custom dataset
-model.fit(train_images, train_labels, epochs=5, validation_data=(test_images, test_labels))
+model.fit(train_images, train_labels, epochs=30, validation_data=(test_images, test_labels))
 
 # Evaluate the model's performance on the custom dataset
 loss, acc = model.evaluate(test_images, test_labels, verbose=2)
